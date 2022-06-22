@@ -108,7 +108,7 @@
     "qunit-dom": "^1.6.0",
     "rancher-cytoscape-dagre": "2.2.7",
     "semver": "^7.3.2",
-    "shell-quote": "^1.6.1",
+    "shell-quote": "^1.7.3",
     "webpack": "^4.44.1",
     "xterm": "^4.9.0",
     "xterm-addon-fit": "^0.4.0",
