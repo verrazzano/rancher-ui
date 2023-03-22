@@ -4403,11 +4403,17 @@ clusterNew:
       lbSubnetName1Placeholder: e.g. my-lb-sub-1
       lbSubnetName2: Name of second pre-existing LB subnet (if applicable)
       lbSubnetName2Placeholder: e.g. my-lb-sub-2
-    quantityPerSubnet:
-      label: Nodes Per AD Count
+    numWorkerNodes:
+      label: Number of worker nodes
       placeholder: e.g. 1
-      required: Nodes per availability-domain is required
-      help: The quantity of nodes nodes to run in each availability domain in the region
+      required: Number of worker nodes is required
+      help: The number of worker nodes to create
+      error: The count of nodes should not be greater than {max}
+    numControlPlaneNodes:
+      label: Number of control plane nodes
+      placeholder: e.g. 1
+      required: Number of control plane nodes is required
+      help: The count of control plane nodes to create
       error: The count of nodes should not be greater than {max}
     nodeShape:
       label: Instance Shape'

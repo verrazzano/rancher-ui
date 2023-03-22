@@ -122,7 +122,7 @@
           {{#if (eq step 2)}}
             <select class="form-control" onchange={{action (mut config.kubernetesVersion) value="target.value"}}>
               <option>  </option>
-              {{#each okeVersions as |choice|}}
+              {{#each kubernetesVersions as |choice|}}
                 {{#if (lte config.kubernetesVersion choice)}}
                   <option value={{choice}} selected={{eq config.kubernetesVersion choice}}>{{choice}}</option>
                 {{/if}}
@@ -133,15 +133,26 @@
           {{/if}}
         </div>
 
+        <div class="col span-4 mb-0">
+          <label class="acc-label">
+            {{t 'clusterNew.ociocne.numControlPlaneNodes.label'}}
+          </label>
+          {{#input-or-display editable=(and (eq step 2) isNew) value=config.numControlPlaneNodes}}
+            {{input-integer min=0 max=maxNodeCount value=config.numControlPlaneNodes classNames="form-control" placeholder=(t 'clusterNew.ociocne.numControlPlaneNodes.placeholder')}}
+            <p class="help-block">
+              {{t 'clusterNew.ociocne.numControlPlaneNodes.help'}}
+            </p>
+          {{/input-or-display}}
+        </div>
 
         <div class="col span-4">
           <label class="acc-label">
-            {{t 'clusterNew.ociocne.quantityPerSubnet.label'}}
+            {{t 'clusterNew.ociocne.numWorkerNodes.label'}}
           </label>
-          {{#input-or-display editable=(or (eq mode "new") eq mode "editing") value=config.quantityPerSubnet}}
-            {{input-integer min=0 max=maxNodeCount value=config.quantityPerSubnet classNames="form-control" placeholder=(t 'clusterNew.ociocne.quantityPerSubnet.placeholder')}}
+          {{#input-or-display editable=(or (eq mode "new") eq mode "editing") value=config.numWorkerNodes}}
+            {{input-integer min=0 max=maxNodeCount value=config.numWorkerNodes classNames="form-control" placeholder=(t 'clusterNew.ociocne.numWorkerNodes.placeholder')}}
             <p class="help-block">
-              {{t 'clusterNew.ociocne.quantityPerSubnet.help'}}
+              {{t 'clusterNew.ociocne.numWorkerNodes.help'}}
             </p>
           {{/input-or-display}}
         </div>
@@ -177,7 +188,7 @@
             {{#if (eq step 2)}}
               <select class="form-control" onchange={{action (mut config.kubernetesVersion) value="target.value"}}>
                 <option>  </option>
-                {{#each okeVersions as |choice|}}
+                {{#each kubernetesVersions as |choice|}}
                   <option value={{choice}} selected={{eq config.kubernetesVersion choice}}>{{choice}}</option>
                 {{/each}}
               </select>
@@ -188,12 +199,24 @@
 
           <div class="col span-4 mb-0">
             <label class="acc-label">
-              {{t 'clusterNew.ociocne.quantityPerSubnet.label'}}
+              {{t 'clusterNew.ociocne.numControlPlaneNodes.label'}}
             </label>
-            {{#input-or-display editable=(and (eq step 2) isNew) value=config.quantityPerSubnet}}
-              {{input-integer min=0 max=maxNodeCount value=config.quantityPerSubnet classNames="form-control" placeholder=(t 'clusterNew.ociocne.quantityPerSubnet.placeholder')}}
+            {{#input-or-display editable=(and (eq step 2) isNew) value=config.numControlPlaneNodes}}
+              {{input-integer min=0 max=maxNodeCount value=config.numControlPlaneNodes classNames="form-control" placeholder=(t 'clusterNew.ociocne.numControlPlaneNodes.placeholder')}}
               <p class="help-block">
-                {{t 'clusterNew.ociocne.quantityPerSubnet.help'}}
+                {{t 'clusterNew.ociocne.numControlPlaneNodes.help'}}
+              </p>
+            {{/input-or-display}}
+          </div>
+
+          <div class="col span-4 mb-0">
+            <label class="acc-label">
+              {{t 'clusterNew.ociocne.numWorkerNodes.label'}}
+            </label>
+            {{#input-or-display editable=(and (eq step 2) isNew) value=config.numWorkerNodes}}
+              {{input-integer min=0 max=maxNodeCount value=config.numWorkerNodes classNames="form-control" placeholder=(t 'clusterNew.ociocne.numWorkerNodes.placeholder')}}
+              <p class="help-block">
+                {{t 'clusterNew.ociocne.numWorkerNodes.help'}}
               </p>
             {{/input-or-display}}
           </div>
@@ -206,16 +229,6 @@
             </label>
             {{#input-or-display editable=(and (eq step 2) isNew) value=config.compartmentId}}
               {{input type="text" name="compartment" classNames="form-control" placeholder=(t 'clusterNew.ociocne.compartmentOCID.placeholder') value=config.compartmentId}}
-            {{/input-or-display}}
-          </div>
-        </div>
-        <div class="row">
-          <div class="col span-4">
-            <label class="acc-label">
-              {{t 'clusterNew.ociocne.kmsKeyId.label'}}
-            </label>
-            {{#input-or-display editable=isNew value=config.kmsKeyId}}
-              {{input type="text" name="kmsKeyId" classNames="form-control" placeholder=(t 'clusterNew.ociocne.kmsKeyId.placeholder') value=config.kmsKeyId}}
             {{/input-or-display}}
           </div>
         </div>
