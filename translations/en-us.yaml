@@ -4344,19 +4344,17 @@ clusterNew:
     label: Oracle Container Engine long
     shortLabel: OCI OCNE
     access:
-      next: "Next: Authenticate & Configure Cluster"
+      next: "Next: Authenticate & Setup Networking"
       loading: Loading values from Oracle Cloud Infrastructure
       title: Choose the region and API Key that will be used to authenticate and configure Oracle Container Engine.
       detail: Choose the region and API Key that will be used to authenticate and configure Oracle Container Engine.
-    region:
-      label: Region
     tenancyOCID:
       label: Tenancy OCID
       placeholder: The OCID of the tenancy in which to create resources
       required: Tenancy OCID is required
-    compartmentOCID:
+    compartmentId:
       label: Compartment OCID
-      placeholder: The OCID of the compartment in which to create the resources
+      placeholder: The OCID of the compartment in which to create the cluster
       required: Compartment OCID is required
     userOcid:
       label: User OCID
@@ -4375,16 +4373,17 @@ clusterNew:
       label: User Private Key Passphrase
       placeholder: The passphrase (if any) that protects private key file the specified OCI user
       provided: Provided
+    controlplane:
+      title: Configure Control Plane
+      detail: Configure the cluster control plane
+    workers:
+      title: Configure Worker nodes
+      detail: Configure the worker nodes
     cluster:
-      title: Cluster Configuration
-      detail: Choose the Kubernetes version and the number of nodes per availability-domain for the cluster.
+      title: Configure control plane and worker nodes
+      detail: Configure cluster nodes and placement.
       next: "Next: Configure Virtual Cloud Network"
       loading: Loading VCNs from Oracle Cloud Infrastructure
-    vcn:
-      title: Virtual Cloud Network
-      detail: Configure the virtual cloud network that will be used for your Kubernetes cluster.
-      label: Virtual Cloud Network
-      required: VCN is required
     version:
       label: Kubernetes Version
       required: Kubernetes Version is required
@@ -4393,34 +4392,85 @@ clusterNew:
       placeholder: e.g. 172.16.0.0/16
       required: Virtual Cloud Network CIDR is required
       error: Virtual Cloud CIDR format error
-    existingVCNDetails:
-      compartmentOCID: OCID of the VCN's compartment
-      compartmentOCIDPlaceholder: e.g. ocid1.compartment.oc1..aaaaaaaa...
-      compartmentOCIDHelp: leave blank if it's the cluster compartment
-      vcnName: Name of the pre-existing VCN
-      vcnNamePlaceholder: e.g. my-vcn
-      lbSubnetName1: Name of first pre-existing LB subnet
-      lbSubnetName1Placeholder: e.g. my-lb-sub-1
-      lbSubnetName2: Name of second pre-existing LB subnet (if applicable)
-      lbSubnetName2Placeholder: e.g. my-lb-sub-2
+    # Networking
+    networking:
+      title: Network Setup
+      detail: Configure the virtual cloud network that will be used for your Kubernetes cluster.
+      next: Configure Control plane and worker nodes
+      loading: Loading node configuration
+    vcnId:
+      help: The OCID of an existing VCN to be used by the cluster
+      label: Virtual Cloud Network OCID
+      placeholder: VCN OCID
+      required: Virtual Cloud Network OCID is required
+    controlPlaneSubnet:
+      help: The OCID of an existing subnet to be used by the control plane
+      label: Control Plane Subnet OCID
+      placeholder: Control Plane Subnet OCID
+      required: Control Plane Subnet OCID is required
+    loadBalancerSubnet:
+      help: The OCID of an existing subnet to be used for load balancers
+      label: Load Balancer Subnet OCID
+      placeholder: Load Balancer Subnet OCID
+      required: Load Balancer Subnet OCID is required
+    workerNodeSubnet:
+      help: The OCID of an existing subnet to be used by the worker nodes
+      label: Worker Node Subnet OCID
+      placeholder: Worker Node Subnet OCID
+      required: Worker Node Subnet OCID is required
+    numControlPlaneNodes:
+      label: Number of control plane nodes
+      placeholder: e.g. 1
+      required: Number of control plane nodes is required
+      help: The number of control plane nodes to create
+      error: The number of nodes should not be greater than {max}
+    controlPlaneShape:
+      label: Control Plane Shape
+      placeholder: Compute shape for control plane nodes
+      required: Control plane shape is required
+      help: The compute shape of the control plane nodes
+      error: err
+    controlPlaneOcpus:
+      label: Control Plane OCPUs
+      placeholder: OCPUs for flex compute shapes
+      help: The number of OCPUs used by each control plane node, for flex compute shapes
+      error: The number of OCPUs should not be greater than {max}
+    controlPlaneMemoryGbs:
+      label: Control Plane Memory in GBs
+      placeholder: Number of GBS of control plane memory
+      help: The amount of memory in GBs used by each control plane node, for flex compute shapes
+      error: The amount of memory should not be greater than {max}
     numWorkerNodes:
       label: Number of worker nodes
       placeholder: e.g. 1
       required: Number of worker nodes is required
       help: The number of worker nodes to create
-      error: The count of nodes should not be greater than {max}
-    numControlPlaneNodes:
-      label: Number of control plane nodes
-      placeholder: e.g. 1
-      required: Number of control plane nodes is required
-      help: The count of control plane nodes to create
-      error: The count of nodes should not be greater than {max}
+      error: The number of nodes should not be greater than {max}
     nodeShape:
-      label: Instance Shape'
-      required: Instance Shape is required
-    nodeSSHKey:
+      label: Worker Node Shape
+      placeholder: Compute shape for worker nodes
+      required: Worker node shape is required
+      help: The compute shape of the worker nodes
+      error: err
+    nodeOcpus:
+      label: Worker Node OCPUs
+      placeholder: OCPUs for flex compute shapes
+      help: The number of OCPUs used by each worker node, for flex compute shapes
+      error: The number of OCPUs should not be greater than {max}
+    nodeMemoryGbs:
+      label: Worker Node Memory in GBs
+      placeholder: Number of memory, in GBs
+      help: The amount of memory in GBs used by each worker node, for flex compute shapes
+      error: The amount of memory should not be greater than {max}
+    nodeImage:
+      label: Oracle Linux 8 OCID
+      placeholder: OL8 OCID
+    region:
+      help: The geographic region in which the cluster will run
+      label: Region
+    nodePublicKeyContents:
       label: SSH public key for nodes
-      placeholder: Optional SSH public key for the nodes
+      placeholder: ssh-rsa public key
     instanceConfig:
       label: Instance Configuration(CPU/Memory)
       gpuLabel: Instance Configuration(CPU/Memory/GPU Type/GPU Count)
@@ -4447,10 +4497,18 @@ clusterNew:
     localDisk:
       label: Local Disk
       placeholder: size GB
-    subnetAccessOptions:
+    vcn:
       quick: Quick Create
+      quickHelp: Create a default VCN infrastructure for your cluster
+      quickResources:
+        header: 'New VCN resources include:'
+        vcn: Virtual Cloud Network (VCN)
+        igw: Internet Gateway (IG)
+        nat: NAT Gateway (NAT)
+        sgw: Service Gateway (SGW)
       custom: Custom Create
-      existing: Existing
+      existing: Existing Infrastructure
+      existingHelp: Use an existing VCN for your cluster
   oracleoke:
     access:
       detail: Choose the region and API Key that will be used to authenticate and configure Oracle Container Engine.
@@ -4555,10 +4613,6 @@ clusterNew:
     subnet:
       label: Node-pool Subnet Access
       required: Node-pool subnet access is required
-    controlPlaneSubnet:
-      label: Control plane Subnet Access
-      required: Control plane subnet access is required
-      warning: Rancher needs to be able to access the Kubernetes API on a private IP for this option to be successful. Typically, this requires VCN peering or running Rancher in the same VCN that hosts the (existing) control plane subnet.
     subnetAccessOptions:
       custom: Custom Create
       existing: Existing
