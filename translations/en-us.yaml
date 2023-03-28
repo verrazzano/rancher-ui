@@ -4462,14 +4462,14 @@ clusterNew:
       placeholder: Number of memory, in GBs
       help: The amount of memory in GBs used by each worker node, for flex compute shapes
       error: The amount of memory should not be greater than {max}
-    nodeImage:
-      label: Oracle Linux 8 OCID
-      placeholder: OL8 OCID
+    imageDisplayName:
+      label: Node Image
+      placeholder: OL8 image display name
     region:
       help: The geographic region in which the cluster will run
       label: Region
     nodePublicKeyContents:
-      label: SSH public key for nodes
+      label: ' SSH public key for nodes'
       placeholder: ssh-rsa public key
     instanceConfig:
       label: Instance Configuration(CPU/Memory)

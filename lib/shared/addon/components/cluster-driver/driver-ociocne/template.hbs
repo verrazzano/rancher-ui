@@ -7,7 +7,6 @@
                          expand=(action expandFn)
                          expandOnInit=true
   }}
-
     <div class="row">
       <div class="col span-6">
         <label class="acc-label">
@@ -290,11 +289,18 @@
         <div class="row">
           <div class="col span-6">
             <label class="acc-label">
-              {{t 'clusterNew.ociocne.nodeImage.label'}}{{field-required}}
+              {{t 'clusterNew.ociocne.imageDisplayName.label'}}{{field-required}}
             </label>
-            {{#input-or-display editable=(or isNew editing) value=config.nodeImage}}
-              {{input type="text" name="node image" classNames="form-control" placeholder=(t 'clusterNew.ociocne.nodeImage.placeholder') value=config.nodeImage}}
-            {{/input-or-display}}
+            {{#if (eq step 3)}}
+              <select class="form-control" onchange={{action (mut config.nodeImages) value="target.value"}}>
+                <option>  </option>
+                {{#each nodeImages as |choice|}}
+                  <option value={{choice}} selected={{eq config.imageDisplayName choice}}>{{choice}}</option>
+                {{/each}}
+              </select>
+            {{else}}
+              <div>{{config.imageDisplayName}}</div>
+            {{/if}}
           </div>
         </div>
         <div class="row">
@@ -461,11 +467,7 @@
       {{/if}}
     {{/if}}
   {{/if}}
-
-
   {{top-errors errors=errors}}
   {{top-errors errors=otherErrors}}
   {{top-errors errors=clusterErrors}}
-
-
 {{/accordion-list}}
