@@ -4343,36 +4343,18 @@ clusterNew:
   ociocne:
     label: Oracle Container Engine long
     shortLabel: OCI OCNE
+    advanced:
+      title: Advanced Settings
+      detail: Advanced Cluster Configuration
     access:
       next: "Next: Authenticate & Setup Networking"
       loading: Loading values from Oracle Cloud Infrastructure
-      title: Choose the region and API Key that will be used to authenticate and configure Oracle Container Engine.
-      detail: Choose the region and API Key that will be used to authenticate and configure Oracle Container Engine.
-    tenancyOCID:
-      label: Tenancy OCID
-      placeholder: The OCID of the tenancy in which to create resources
-      required: Tenancy OCID is required
+      title: Choose the region and credentials that will be used for Oracle Cloud authentication.
+      detail: Choose the region and credentials that will be used for Oracle Cloud authentication.
     compartmentId:
       label: Compartment OCID
       placeholder: The OCID of the compartment in which to create the cluster
       required: Compartment OCID is required
-    userOcid:
-      label: User OCID
-      placeholder: The OCID of a user who has access to the specified tenancy/compartment
-      required: Tenancy OCID is required
-    userFingerprint:
-      label: User fingerprint
-      placeholder: The fingerprint corresponding to the specified user's private API Key
-      required: User private key fingerprint is required
-    secretKey:
-      label: User Private Key
-      placeholder: The private API key contents for the specified OCI user, in PEM format
-      provided: Provided
-      required: User Private API Key is required
-    secretKeyPassphrase:
-      label: User Private Key Passphrase
-      placeholder: The passphrase (if any) that protects private key file the specified OCI user
-      provided: Provided
     controlplane:
       title: Configure Control Plane
       detail: Configure the cluster control plane
@@ -4403,27 +4385,34 @@ clusterNew:
       label: Virtual Cloud Network OCID
       placeholder: VCN OCID
       required: Virtual Cloud Network OCID is required
+      invalid: Virtual Cloud Network OCID must be a well-formed OCID
     controlPlaneSubnet:
       help: The OCID of an existing subnet to be used by the control plane
       label: Control Plane Subnet OCID
       placeholder: Control Plane Subnet OCID
       required: Control Plane Subnet OCID is required
+      invalid: Control Plane Subnet OCID must be a well-formed OCID
     loadBalancerSubnet:
       help: The OCID of an existing subnet to be used for load balancers
       label: Load Balancer Subnet OCID
       placeholder: Load Balancer Subnet OCID
       required: Load Balancer Subnet OCID is required
+      invalid: Load Balancer Subnet  OCID must be a well-formed OCID
     workerNodeSubnet:
       help: The OCID of an existing subnet to be used by the worker nodes
       label: Worker Node Subnet OCID
       placeholder: Worker Node Subnet OCID
       required: Worker Node Subnet OCID is required
+      invalid: Worker Node Subnet OCID must be a well-formed OCID
     numControlPlaneNodes:
       label: Number of control plane nodes
       placeholder: e.g. 1
       required: Number of control plane nodes is required
       help: The number of control plane nodes to create
       error: The number of nodes should not be greater than {max}
+    bootVolumeSize:
+      label: Boot Volume Size (Gbs)
+      help: The size of the node's boot volume in gigabytes
     controlPlaneShape:
       label: Control Plane Shape
       placeholder: Compute shape for control plane nodes
@@ -4478,14 +4467,6 @@ clusterNew:
     subnet:
       label: Subnet Access
       required: Subnet access is required
-    node:
-      title: Node Type
-      detail: Choose the node type that will be used for this Kubernetes cluster
-      next: "Next: Configure Node Instances"
-      loading: Loading configuration from Oracle Cloud Infrastructure
-    instance:
-      title: Node Instance Configuration
-      detail: Configure the instance that will be used as nodes in the cluster.
     os:
       label: Operating System
     storageType:
