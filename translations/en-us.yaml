@@ -4343,6 +4343,42 @@ clusterNew:
   ociocne:
     label: Oracle Container Engine long
     shortLabel: OCI OCNE
+    controlPlaneImages:
+      title: Control Plane
+      detail: Configure control plane images
+      registry: Control Plane Registry
+      registryHelp: Registry to download control plane images from
+      etcdTag: ETCD tag
+      etcdTagHelp: Control plane ETCD image tag
+      coreDNSTag: CoreDNS tag
+      coreDNSTagHelp: Control plane coreDNS image tag
+    verrazzano:
+      title: Verrazzano
+      detail: Configure Verrazzano Installation
+      resource: Verrazzano Resource YAML
+      install: Install Verrazzano
+      image: Verrazzano Platform Operator Image
+      imageHelp: image to use when installing Verrazzano Platform Operator
+    addons:
+      title: Cluster Addons
+      detail: Configure addon services for your cluster
+      calico:
+        title: Container Networking Interface
+        install: Install Calico
+        registry: Calico Registry
+        registryHelp: Registry to download Calico images from
+      csi:
+        title: Container Storage Interface
+        install: Install CSI
+        image: OCI CSI Provider Image
+        imageHelp: Install image for Oracle Cloud Container Storage Interface
+        registry: CSI Registry
+        registryHelp: Registry to download CSI images from
+      ccm:
+        title: Cloud Controller Manager
+        install: Install CCM
+        image: CCM Image
+        imageHelp: Install image for Oracle Cloud Controller Manager
     advanced:
       title: Advanced Settings
       detail: Advanced Cluster Configuration
@@ -4353,7 +4389,7 @@ clusterNew:
       detail: Choose the region and credentials that will be used for Oracle Cloud authentication.
     compartmentId:
       label: Compartment OCID
-      placeholder: The OCID of the compartment in which to create the cluster
+      placeholder: Compartment OCID where the cluster will be created
       required: Compartment OCID is required
     controlplane:
       title: Configure Control Plane
@@ -4374,12 +4410,6 @@ clusterNew:
       placeholder: e.g. 172.16.0.0/16
       required: Virtual Cloud Network CIDR is required
       error: Virtual Cloud CIDR format error
-    # Networking
-    networking:
-      title: Network Setup
-      detail: Configure the virtual cloud network that will be used for your Kubernetes cluster.
-      next: Configure Control plane and worker nodes
-      loading: Loading node configuration
     vcnId:
       help: The OCID of an existing VCN to be used by the cluster
       label: Virtual Cloud Network OCID
@@ -4458,7 +4488,7 @@ clusterNew:
       help: The geographic region in which the cluster will run
       label: Region
     nodePublicKeyContents:
-      label: ' SSH public key for nodes'
+      label: Public key for node SSH
       placeholder: ssh-rsa public key
     instanceConfig:
       label: Instance Configuration(CPU/Memory)
@@ -4478,7 +4508,24 @@ clusterNew:
     localDisk:
       label: Local Disk
       placeholder: size GB
+    networking:
+      title: Cluster Networking
+      detail: Configure cluster networking and proxy
+      podCidr:
+        title: Pod CIDR Block
+        help: IPv4 CIDR block for pod networking
+      clusterCidr:
+        title: Cluster CIDR Block
+        help: IPv4 CIDR block for cluster networking
+      proxyEndpoint:
+        placeholder: 'http://proxy-server:80'
+        title: Proxy Endpoint
+        help: Used when your cluster is behind a HTTP/HTTPS proxy
     vcn:
+      title: Network Setup
+      detail: Configure the virtual cloud network that will be used for your Kubernetes cluster.
+      next: Configure Control plane and worker nodes
+      loading: Loading node configuration
       quick: Quick Create
       quickHelp: Create a default VCN infrastructure for your cluster
       quickResources:
