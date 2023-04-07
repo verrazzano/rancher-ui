@@ -188,8 +188,7 @@
 
             {{#if (eq vcnCreationMode "Existing")}}
               <div class="row">
-
-                <div class="col span-12">
+                <div class="col span-10">
                   <label class="acc-label">{{t 'clusterNew.ociocne.vcnId.label'}}{{field-required}}</label>
                   {{#input-or-display editable=(and (eq step 2) isNew) value=config.vcnId}}
                     {{input type="text" classNames="form-control" placeholder=(t 'clusterNew.ociocne.vcnId.placeholder') value=config.vcnId}}
@@ -197,7 +196,7 @@
                 </div>
               </div>
               <div class="row">
-                <div class="col span-12">
+                <div class="col span-10">
                   <label class="acc-label">{{t 'clusterNew.ociocne.controlPlaneSubnet.label'}}{{field-required}}</label>
                   {{#input-or-display editable=(and (eq step 2) isNew) value=config.controlPlaneSubnet}}
                     {{input type="text" classNames="form-control" placeholder=(t 'clusterNew.ociocne.controlPlaneSubnet.placeholder') value=config.controlPlaneSubnet}}
@@ -205,7 +204,7 @@
                 </div>
               </div>
               <div class="row">
-                <div class="col span-12">
+                <div class="col span-10">
                   <label class="acc-label">{{t 'clusterNew.ociocne.loadBalancerSubnet.label'}}{{field-required}}</label>
                   {{#input-or-display editable=(and (eq step 2) isNew) value=config.loadBalancerSubnet}}
                     {{input type="text" classNames="form-control" placeholder=(t 'clusterNew.ociocne.loadBalancerSubnet.placeholder') value=config.loadBalancerSubnet}}
@@ -213,7 +212,7 @@
                 </div>
               </div>
               <div class="row">
-                <div class="col span-12">
+                <div class="col span-10">
                   <label class="acc-label">{{t 'clusterNew.ociocne.workerNodeSubnet.label'}}{{field-required}}</label>
                   {{#input-or-display editable=(and (eq step 2) isNew) value=config.workerNodeSubnet}}
                     {{input type="text" classNames="form-control" placeholder=(t 'clusterNew.ociocne.workerNodeSubnet.placeholder') value=config.workerNodeSubnet}}
@@ -223,7 +222,6 @@
             {{/if}}
             {{/input-or-display}}
           </div>
-
         </div>
 
       {{/accordion-list-item}}
@@ -348,7 +346,7 @@
                   {{t 'clusterNew.ociocne.controlPlaneOcpus.label'}}
                 </label>
                 {{#input-or-display editable=(and (eq step 3) isNew) value=config.controlPlaneOcpus}}
-                  {{input-integer min=1 max=maxNodeCount value=config.controlPlaneOcpus classNames="form-control" placeholder=(t 'clusterNew.ociocne.controlPlaneOcpus.placeholder')}}
+                  {{input-integer min=1 max=64 value=config.controlPlaneOcpus classNames="form-control" placeholder=(t 'clusterNew.ociocne.controlPlaneOcpus.placeholder')}}
                   <p class="help-block">
                     {{t 'clusterNew.ociocne.controlPlaneOcpus.help'}}
                   </p>
@@ -359,7 +357,7 @@
                   {{t 'clusterNew.ociocne.controlPlaneMemoryGbs.label'}}
                 </label>
                 {{#input-or-display editable=(and (eq step 3) isNew) value=config.controlPlaneMemoryGbs}}
-                  {{input-integer min=2 max=maxNodeCount value=config.controlPlaneMemoryGbs classNames="form-control" placeholder=(t 'clusterNew.ociocne.controlPlaneMemoryGbs.placeholder')}}
+                  {{input-integer min=2 max=1024 value=config.controlPlaneMemoryGbs classNames="form-control" placeholder=(t 'clusterNew.ociocne.controlPlaneMemoryGbs.placeholder')}}
                   <p class="help-block">
                     {{t 'clusterNew.ociocne.controlPlaneMemoryGbs.help'}}
                   </p>
@@ -421,7 +419,7 @@
                   {{t 'clusterNew.ociocne.nodeOcpus.label'}}
                 </label>
                 {{#input-or-display editable=(and (eq step 3) isNew) value=config.nodeOcpus}}
-                  {{input-integer min=1 max=maxNodeCount value=config.nodeOcpus classNames="form-control" placeholder=(t 'clusterNew.ociocne.nodeOcpus.placeholder')}}
+                  {{input-integer min=1 max=64 value=config.nodeOcpus classNames="form-control" placeholder=(t 'clusterNew.ociocne.nodeOcpus.placeholder')}}
                   <p class="help-block">
                     {{t 'clusterNew.ociocne.nodeOcpus.help'}}
                   </p>
@@ -432,7 +430,7 @@
                   {{t 'clusterNew.ociocne.nodeMemoryGbs.label'}}
                 </label>
                 {{#input-or-display editable=(and (eq step 3) isNew) value=config.nodeMemoryGbs}}
-                  {{input-integer min=2 max=maxNodeCount value=config.nodeMemoryGbs classNames="form-control" placeholder=(t 'clusterNew.ociocne.nodeMemoryGbs.placeholder')}}
+                  {{input-integer min=2 max=1024 value=config.nodeMemoryGbs classNames="form-control" placeholder=(t 'clusterNew.ociocne.nodeMemoryGbs.placeholder')}}
                   <p class="help-block">
                     {{t 'clusterNew.ociocne.nodeMemoryGbs.help'}}
                   </p>
@@ -441,17 +439,11 @@
             </div>
           {{/if}}
         {{/accordion-list-item}}
-      {{/accordion-list-item}}
-      {{#accordion-list-item title=(t "clusterNew.ociocne.advanced.title")
-                             detail=(t "clusterNew.ociocne.advanced.detail")
-                             expandAll=expandAll
-                             expand=(action expandFn)
-                             expandOnInit=false}}
         {{#accordion-list-item title=(t "clusterNew.ociocne.verrazzano.title")
                                detail=(t "clusterNew.ociocne.verrazzano.detail")
                                expandAll=expandAll
                                expand=(action expandFn)
-                               expandOnInit=false}}
+                               expandOnInit=true}}
           <div class="row">
             <div class="col span-2 mb-0">
               <label for="verrazzano-checkbox">
@@ -483,6 +475,12 @@
             }}
           </div>
         {{/accordion-list-item}}
+      {{/accordion-list-item}}
+      {{#accordion-list-item title=(t "clusterNew.ociocne.advanced.title")
+                             detail=(t "clusterNew.ociocne.advanced.detail")
+                             expandAll=expandAll
+                             expand=(action expandFn)
+                             expandOnInit=false}}
         {{#accordion-list-item title=(t "clusterNew.ociocne.networking.title")
                                detail=(t "clusterNew.ociocne.networking.detail")
                                expandAll=expandAll
