@@ -4387,10 +4387,12 @@ clusterNew:
       loading: Loading values from Oracle Cloud Infrastructure
       title: Choose the region and credentials that will be used for Oracle Cloud authentication.
       detail: Choose the region and credentials that will be used for Oracle Cloud authentication.
+    cloudCredentialId:
+      invalid: A valid cloud credential is required
     compartmentId:
       label: Compartment OCID
       placeholder: Compartment OCID where the cluster will be created
-      required: Compartment OCID is required
+      invalid: A valid compartment OCID is required
     controlplane:
       title: Configure Control Plane
       detail: Configure the cluster control plane
@@ -4463,7 +4465,7 @@ clusterNew:
       label: Number of worker nodes
       placeholder: e.g. 1
       required: Number of worker nodes is required
-      help: The number of worker nodes to create
+      help: The number of worker nodes to create.
       error: The number of nodes should not be greater than {max}
     nodeShape:
       label: Worker Node Shape
@@ -4497,17 +4499,6 @@ clusterNew:
     subnet:
       label: Subnet Access
       required: Subnet access is required
-    os:
-      label: Operating System
-    storageType:
-      label: Default Persistent Volume Disk Type
-    storageSize:
-      label: Default Persistent Volume Disk Size
-      placeholder: e.g. 10
-      error: Default Persistent Volume Disk Size should be greater than 0
-    localDisk:
-      label: Local Disk
-      placeholder: size GB
     networking:
       title: Cluster Networking
       detail: Configure cluster networking and proxy
