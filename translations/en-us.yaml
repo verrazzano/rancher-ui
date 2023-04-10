@@ -4383,7 +4383,7 @@ clusterNew:
       title: Advanced Settings
       detail: Advanced Cluster Configuration
     access:
-      next: "Next: Authenticate & Setup Networking"
+      next: "Authenticate and Configure Cluster"
       loading: Loading values from Oracle Cloud Infrastructure
       title: Choose the region and credentials that will be used for Oracle Cloud authentication.
       detail: Choose the region and credentials that will be used for Oracle Cloud authentication.
@@ -4404,6 +4404,11 @@ clusterNew:
       detail: Configure cluster nodes and placement.
       next: "Next: Configure Virtual Cloud Network"
       loading: Loading VCNs from Oracle Cloud Infrastructure
+    clusterMode:
+      singleNode: Single Node
+      singleNodeHelp: Configure a single node cluster
+      multiNode: Multi-Node
+      multiNodeHelp: Configure a multi-node cluster
     version:
       label: Kubernetes Version
       required: Kubernetes Version is required
