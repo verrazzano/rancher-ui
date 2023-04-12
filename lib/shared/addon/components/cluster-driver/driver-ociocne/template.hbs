@@ -77,17 +77,11 @@
           <label class="acc-label">
             {{t 'clusterNew.ociocne.version.label'}}
           </label>
-          {{#if (eq step 3)}}
-            <select class="form-control" onchange={{action (mut config.kubernetesVersion) value="target.value"}}>
-              {{#each kubernetesVersions as |choice|}}
-                {{#if (lte config.kubernetesVersion choice)}}
-                  <option value={{choice}} selected={{eq config.kubernetesVersion choice}}>{{choice}}</option>
-                {{/if}}
-              {{/each}}
-            </select>
-          {{else}}
-            <div>{{config.kubernetesVersion}}</div>
-          {{/if}}
+          <select class="form-control" onchange={{action (mut config.kubernetesVersion) value="target.value"}}>
+            {{#each kubernetesVersions as |choice|}}
+              <option value={{choice}} selected={{eq config.kubernetesVersion choice}}>{{choice}}</option>
+            {{/each}}
+          </select>
         </div>
 
         <div class="col span-4 mb-0">
@@ -531,24 +525,6 @@
               {{input type="text" name="cp-registry" classNames="form-control" value=config.controlPlaneRegistry}}
               <p class="help-block">
                 {{t 'clusterNew.ociocne.controlPlaneImages.registryHelp'}}
-              </p>
-            </div>
-            <div class="col span-4 mb-0">
-              <label for="etcd-tag">
-                {{t 'clusterNew.ociocne.controlPlaneImages.etcdTag'}}{{field-required}}
-              </label>
-              {{input type="text" name="etcd-tag" classNames="form-control" value=config.etcdImageTag}}
-              <p class="help-block">
-                {{t 'clusterNew.ociocne.controlPlaneImages.etcdTagHelp'}}
-              </p>
-            </div>
-            <div class="col span-4 mb-0">
-              <label for="coredns-tag">
-                {{t 'clusterNew.ociocne.controlPlaneImages.coreDNSTag'}}{{field-required}}
-              </label>
-              {{input type="text" name="coredns-tag" classNames="form-control" value=config.coreDnsImageTag}}
-              <p class="help-block">
-                {{t 'clusterNew.ociocne.controlPlaneImages.coreDNSTagHelp'}}
               </p>
             </div>
           </div>
