@@ -4343,6 +4343,9 @@ clusterNew:
   ociocne:
     label: Oracle Container Engine long
     shortLabel: OCI OCNE
+    nodePool:
+      addNew: Add Node Pool
+      delete: Delete Node Pool
     controlPlaneImages:
       title: Control Plane
       detail: Configure control plane images
@@ -4397,8 +4400,8 @@ clusterNew:
       title: Configure Control Plane
       detail: Configure the cluster control plane
     workers:
-      title: Configure Worker nodes
-      detail: Configure the worker nodes
+      title: Configure Node Pools
+      detail: Configure node pools for your cluster
     cluster:
       title: Configure control plane and worker nodes
       detail: Configure cluster nodes and placement.
@@ -4472,6 +4475,9 @@ clusterNew:
       required: Number of worker nodes is required
       help: The number of worker nodes to create.
       error: The number of nodes should not be greater than {max}
+    nodeName:
+      label: Name
+      help: Name of the node pool
     nodeShape:
       label: Worker Node Shape
       placeholder: Compute shape for worker nodes
