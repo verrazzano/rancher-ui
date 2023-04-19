@@ -1,6 +1,6 @@
 {
   "name": "ui",
-  "version": "master-dev",
+  "version": "2.7.2",
   "private": true,
   "repository": "https://github.com/rancher/ui",
   "license": "Apache-2.0",
@@ -118,7 +118,6 @@
   "dependencies": {
     "mysql": "^2.15.0",
     "request": "^2.83.0",
-    "sendgrid": "^5.2.3",
     "stripe": "^8.107.0"
   },
   "resolutions": {
