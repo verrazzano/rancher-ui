@@ -11,7 +11,7 @@ export RELEASE=<rancher-ui release version>
 
 
 
-###Build and Push Images
+###Build 
 
 
 Update dependencies and create node_modules
