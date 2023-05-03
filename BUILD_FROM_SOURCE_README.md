@@ -11,7 +11,7 @@ export RELEASE=<rancher-ui release version>
 
 
 
-###Build 
+###Build Tarball
 
 
 Update dependencies and create node_modules
