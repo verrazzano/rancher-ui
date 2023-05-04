@@ -138,7 +138,7 @@
             {{t 'clusterNew.ociocne.version.label'}}
           </label>
           {{#if (eq step 2)}}
-            {{#input-or-display value=config.controlPlaneShapekubernetesVersion}}
+            {{#input-or-display value=config.kubernetesVersion}}
               {{searchable-select class="form-control"
                                   content=kubernetesVersionOptions
                                   value=config.kubernetesVersion
@@ -593,7 +593,7 @@
               {{t 'clusterNew.ociocne.version.label'}}
             </label>
             {{#if (eq step 3)}}
-              {{#input-or-display value=config.controlPlaneShapekubernetesVersion}}
+              {{#input-or-display value=config.kubernetesVersion}}
                 {{searchable-select class="form-control"
                                     content=kubernetesVersionOptions
                                     value=config.kubernetesVersion
