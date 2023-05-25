@@ -4369,14 +4369,6 @@ clusterNew:
         title: Private Registry
         detail: Container registry URL to use for private registry
         placeholder: 'my-container-registry.com'
-      pullSecretName:
-        title: Image Pull Secret Name
-        detail: Name of existing secret on admin cluster for private registry
-        placeholder: name
-      pullSecretNamespace:
-        title: Image Pull Secret Name
-        detail: Namespace of existing secret on admin cluster for private registry
-        placeholder: namespace
       yaml:
         title: YAML Manifests
         detail: Deploy additional manifests on the managed cluster

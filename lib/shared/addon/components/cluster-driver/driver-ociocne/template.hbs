@@ -473,24 +473,6 @@
               {{t 'clusterNew.ociocne.addons.registry.detail'}}
             </p>
           </div>
-          <div class="col span-4 mb-0">
-            <label>
-              {{t 'clusterNew.ociocne.addons.pullSecretName.title'}}
-            </label>
-            {{input type="text" name="private-registry" classNames="form-control" placeholder=(t 'clusterNew.ociocne.addons.pullSecretName.placeholder') value=config.imagePullSecretName}}
-            <p class="help-block">
-              {{t 'clusterNew.ociocne.addons.pullSecretName.detail'}}
-            </p>
-          </div>
-          <div class="col span-4 mb-0">
-            <label>
-              {{t 'clusterNew.ociocne.addons.pullSecretNamespace.title'}}
-            </label>
-            {{input type="text" name="private-registry" classNames="form-control" placeholder=(t 'clusterNew.ociocne.addons.pullSecretNamespace.placeholder') value=config.imagePullSecretNamespace}}
-            <p class="help-block">
-              {{t 'clusterNew.ociocne.addons.pullSecretNamespace.detail'}}
-            </p>
-          </div>
         </div>
         <p class="text-bold">{{t 'clusterNew.ociocne.addons.install'}}</p>
         <div class="row">
@@ -1149,24 +1131,6 @@
               {{input type="text" name="private-registry" classNames="form-control" placeholder=(t 'clusterNew.ociocne.addons.registry.placeholder') value=config.privateRegistry}}
               <p class="help-block">
                 {{t 'clusterNew.ociocne.addons.registry.detail'}}
-              </p>
-            </div>
-            <div class="col span-4 mb-0">
-              <label>
-                {{t 'clusterNew.ociocne.addons.pullSecretName.title'}}
-              </label>
-              {{input type="text" name="private-registry" classNames="form-control" placeholder=(t 'clusterNew.ociocne.addons.pullSecretName.placeholder') value=config.imagePullSecretName}}
-              <p class="help-block">
-                {{t 'clusterNew.ociocne.addons.pullSecretName.detail'}}
-              </p>
-            </div>
-            <div class="col span-4 mb-0">
-              <label>
-                {{t 'clusterNew.ociocne.addons.pullSecretNamespace.title'}}
-              </label>
-              {{input type="text" name="private-registry" classNames="form-control" placeholder=(t 'clusterNew.ociocne.addons.pullSecretNamespace.placeholder') value=config.imagePullSecretNamespace}}
-              <p class="help-block">
-                {{t 'clusterNew.ociocne.addons.pullSecretNamespace.detail'}}
               </p>
             </div>
           </div>
