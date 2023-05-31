@@ -417,6 +417,49 @@
         {{/accordion-list-item}}
       {{/each}}
     {{/accordion-list-item}}
+
+    {{#accordion-list-item title=(t "clusterNew.ociocne.verrazzano.title")
+                           detail=(t "clusterNew.ociocne.verrazzano.detail")
+                           expandAll=expandAll
+                           expand=(action expandFn)
+                           expandOnInit=true}}
+      <div class="row">
+        <div class="col span-2 mb-0">
+          <label for="verrazzano-checkbox">
+            {{t 'clusterNew.ociocne.verrazzano.install'}}
+          </label>
+          {{input type="checkbox" name="verrazzano-checkbox" classNames="form-control" checked=config.installVerrazzano}}
+        </div>
+        <div class="col span-6 mb-0">
+          <label for="verrazzano-image">
+            {{t 'clusterNew.ociocne.verrazzano.version'}}
+          </label>
+          {{#input-or-display value=config.verrazzanoVersion}}
+            {{searchable-select class="form-control"
+                                content=verrazzanoVersionOptions
+                                value=config.verrazzanoVersion
+            }}
+          {{/input-or-display}}
+          <p class="help-block">
+            {{t 'clusterNew.ociocne.verrazzano.versionHelp'}}
+          </p>
+        </div>
+      </div>
+      <div class="row pt-10">
+        <label>
+          {{t 'clusterNew.ociocne.verrazzano.resource'}}
+        </label>
+        {{input-yaml
+          showUpload=true
+          showDownload=true
+          canChangeName=false
+          value=config.verrazzanoResource
+          autoResize=true
+          loading=loading
+        }}
+      </div>
+    {{/accordion-list-item}}
+
     {{#accordion-list-item title=(t "clusterNew.ociocne.advanced.title")
                            detail=(t "clusterNew.ociocne.advanced.detail")
                            expandAll=expandAll
@@ -487,6 +530,18 @@
               {{t 'clusterNew.ociocne.addons.calico.install'}}
             </label>
             {{input type="checkbox" name="calico-checkbox" classNames="form-control" checked=config.installCalico}}
+          </div>
+        </div>
+        <p class="text-bold">{{t 'clusterNew.ociocne.addons.tagOverrides'}}</p>
+        <div class="row">
+          <div class="col span-4 mb-0">
+            <label>
+              {{t 'clusterNew.ociocne.verrazzano.versionOverride'}}
+            </label>
+            {{input type="text" name="verrazzano-version-override" classNames="form-control" value=config.verrazzanoVersion}}
+            <p class="help-block">
+              {{t 'clusterNew.ociocne.verrazzano.versionHelp'}}
+            </p>
           </div>
         </div>
       {{/accordion-list-item}}
@@ -1017,11 +1072,16 @@
           </div>
           <div class="col span-6 mb-0">
             <label for="verrazzano-image">
-              {{t 'clusterNew.ociocne.verrazzano.image'}}
+              {{t 'clusterNew.ociocne.verrazzano.version'}}
             </label>
-            {{input type="text" name="verrazzano-image" classNames="form-control" value=config.verrazzanoImage}}
+            {{#input-or-display value=config.verrazzanoVersion}}
+              {{searchable-select class="form-control"
+                                  content=verrazzanoVersionOptions
+                                  value=config.verrazzanoVersion
+              }}
+            {{/input-or-display}}
             <p class="help-block">
-              {{t 'clusterNew.ociocne.verrazzano.imageHelp'}}
+              {{t 'clusterNew.ociocne.verrazzano.versionHelp'}}
             </p>
           </div>
         </div>
@@ -1147,6 +1207,18 @@
                 {{t 'clusterNew.ociocne.addons.calico.install'}}
               </label>
               {{input type="checkbox" name="calico-checkbox" classNames="form-control" checked=config.installCalico}}
+            </div>
+          </div>
+          <p class="text-bold">{{t 'clusterNew.ociocne.addons.tagOverrides'}}</p>
+          <div class="row">
+            <div class="col span-4 mb-0">
+              <label>
+                {{t 'clusterNew.ociocne.verrazzano.versionOverride'}}
+              </label>
+              {{input type="text" name="verrazzano-version-override" classNames="form-control" value=config.verrazzanoVersion}}
+              <p class="help-block">
+                {{t 'clusterNew.ociocne.verrazzano.versionHelp'}}
+              </p>
             </div>
           </div>
         {{/accordion-list-item}}

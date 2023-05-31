@@ -4360,9 +4360,11 @@ clusterNew:
       detail: Configure Verrazzano Installation
       resource: Verrazzano Resource YAML
       install: Install Verrazzano
-      image: Verrazzano Platform Operator Image
-      imageHelp: image to use when installing Verrazzano Platform Operator
+      version: Verrazzano Version
+      versionOverride: Verrazzano Version Override
+      versionHelp: Version of Verrazzano to install
     addons:
+      tagOverrides: Tag Overrides
       install: Addons
       registry:
         heading: Private Registry Configuration (Optional)
