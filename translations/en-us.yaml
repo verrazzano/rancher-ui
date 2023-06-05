@@ -4360,9 +4360,10 @@ clusterNew:
       detail: Configure Verrazzano Installation
       resource: Verrazzano Resource YAML
       install: Install Verrazzano
-      version: Verrazzano Version
       versionOverride: Verrazzano Version Override
+      tagOverride: Verrazzano Tag Override
       versionHelp: Version of Verrazzano to install
+      tagHelp: Verrazzano Image Tag
     addons:
       tagOverrides: Tag Overrides
       install: Addons

@@ -407,13 +407,16 @@
               {{/input-or-display}}
             </div>
           </div>
+          <div class="row">
+            <button
+              class="btn btn-sm bg-primary inline-block pt-5"
+              style="margin-top: -5px;" type="button" {{action "deleteNodePool" np}}
+            >
+              {{t "clusterNew.ociocne.nodePool.delete"}}
+            </button>
+          </div>
 
-          <button
-            class="btn btn-sm bg-primary inline-block pt-5"
-            style="margin-top: -5px;" type="button" {{action "deleteNodePool" np}}
-          >
-            {{t "clusterNew.ociocne.nodePool.delete"}}
-          </button>
+
         {{/accordion-list-item}}
       {{/each}}
     {{/accordion-list-item}}
@@ -432,12 +435,12 @@
         </div>
         <div class="col span-6 mb-0">
           <label for="verrazzano-image">
-            {{t 'clusterNew.ociocne.verrazzano.version'}}
+            {{t 'clusterNew.ociocne.verrazzano.tagHelp'}}
           </label>
-          {{#input-or-display value=config.verrazzanoVersion}}
+          {{#input-or-display value=config.verrazzanoTag}}
             {{searchable-select class="form-control"
                                 content=verrazzanoVersionOptions
-                                value=config.verrazzanoVersion
+                                value=config.verrazzanoTag
             }}
           {{/input-or-display}}
           <p class="help-block">
@@ -534,6 +537,15 @@
         </div>
         <p class="text-bold">{{t 'clusterNew.ociocne.addons.tagOverrides'}}</p>
         <div class="row">
+          <div class="col span-4 mb-0">
+            <label>
+              {{t 'clusterNew.ociocne.verrazzano.tagOverride'}}
+            </label>
+            {{input type="text" name="verrazzano-tag-override" classNames="form-control" value=config.verrazzanoTag}}
+            <p class="help-block">
+              {{t 'clusterNew.ociocne.verrazzano.tagHelp'}}
+            </p>
+          </div>
           <div class="col span-4 mb-0">
             <label>
               {{t 'clusterNew.ociocne.verrazzano.versionOverride'}}
@@ -1048,12 +1060,14 @@
               </div>
             </div>
 
-            <button
-              class="btn btn-sm bg-primary inline-block pt-5"
-              style="margin-top: -5px;" type="button" {{action "deleteNodePool" np}}
-            >
-              {{t "clusterNew.ociocne.nodePool.delete"}}
-            </button>
+            <div class="row">
+              <button
+                class="btn btn-sm bg-primary inline-block pt-5"
+                style="margin-top: -5px;" type="button" {{action "deleteNodePool" np}}
+              >
+                {{t "clusterNew.ociocne.nodePool.delete"}}
+              </button>
+            </div>
           {{/accordion-list-item}}
         {{/each}}
       {{/accordion-list-item}}
@@ -1072,17 +1086,14 @@
           </div>
           <div class="col span-6 mb-0">
             <label for="verrazzano-image">
-              {{t 'clusterNew.ociocne.verrazzano.version'}}
+              {{t 'clusterNew.ociocne.verrazzano.tagHelp'}}
             </label>
-            {{#input-or-display value=config.verrazzanoVersion}}
+            {{#input-or-display value=config.verrazzanoTag}}
               {{searchable-select class="form-control"
                                   content=verrazzanoVersionOptions
-                                  value=config.verrazzanoVersion
+                                  value=config.verrazzanoTag
               }}
             {{/input-or-display}}
-            <p class="help-block">
-              {{t 'clusterNew.ociocne.verrazzano.versionHelp'}}
-            </p>
           </div>
         </div>
         <div class="row pt-10">
@@ -1211,6 +1222,15 @@
           </div>
           <p class="text-bold">{{t 'clusterNew.ociocne.addons.tagOverrides'}}</p>
           <div class="row">
+            <div class="col span-4 mb-0">
+              <label>
+                {{t 'clusterNew.ociocne.verrazzano.tagOverride'}}
+              </label>
+              {{input type="text" name="verrazzano-tag-override" classNames="form-control" value=config.verrazzanoTag}}
+              <p class="help-block">
+                {{t 'clusterNew.ociocne.verrazzano.tagHelp'}}
+              </p>
+            </div>
             <div class="col span-4 mb-0">
               <label>
                 {{t 'clusterNew.ociocne.verrazzano.versionOverride'}}
