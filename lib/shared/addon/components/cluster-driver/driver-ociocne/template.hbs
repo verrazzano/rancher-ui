@@ -274,7 +274,7 @@
             <label class="acc-label">
               {{t 'clusterNew.ociocne.version.etcd'}}{{field-required}}
             </label>
-            {{#if (eq step 3)}}
+            {{#if (eq step 2)}}
               {{#input-or-display value=config.etcdImageTag}}
                 {{searchable-select class="form-control"
                                     content=etcdTags
@@ -289,7 +289,7 @@
             <label class="acc-label">
               {{t 'clusterNew.ociocne.version.coredns'}}{{field-required}}
             </label>
-            {{#if (eq step 3)}}
+            {{#if (eq step 2)}}
               {{#input-or-display value=config.corednsImageTag}}
                 {{searchable-select class="form-control"
                                     content=coreDNSTags
@@ -304,7 +304,7 @@
             <label class="acc-label">
               {{t 'clusterNew.ociocne.version.calico'}}{{field-required}}
             </label>
-            {{#if (eq step 3)}}
+            {{#if (eq step 2)}}
               {{#input-or-display value=config.tigeraImageTag}}
                 {{searchable-select class="form-control"
                                     content=tigeraOperatorTags
