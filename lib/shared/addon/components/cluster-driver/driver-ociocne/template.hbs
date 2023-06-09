@@ -430,16 +430,10 @@
               {{/input-or-display}}
             </div>
           </div>
-          <div class="row">
-            <button
-              class="btn btn-sm bg-primary inline-block pt-5"
-              style="margin-top: -5px;" type="button" {{action "deleteNodePool" np}}
-            >
+          <button class="btn btn-sm bg-primary inline-block pt-5"
+                  style="margin-top: -5px;" type="button" {{action "deleteNodePool" np}}>
               {{t "clusterNew.ociocne.nodePool.delete"}}
-            </button>
-          </div>
-
-
+          </button>
         {{/accordion-list-item}}
       {{/each}}
     {{/accordion-list-item}}
