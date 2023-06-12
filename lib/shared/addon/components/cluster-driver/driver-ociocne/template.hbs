@@ -599,32 +599,6 @@
                 <label>
                   {{radio-button
                     selection=vcnCreationMode
-                    value="Quick"
-                  }}
-                  {{t 'clusterNew.ociocne.vcn.quick'}}
-                  <p class="help-block">
-                    {{t 'clusterNew.ociocne.vcn.quickHelp'}}
-                  </p>
-                </label>
-              </div>
-            {{/if}}
-
-            {{#if (eq vcnCreationMode "Quick")}}
-              <div>
-                <b>{{t 'clusterNew.ociocne.vcn.quickResources.header'}}</b>
-                <ul>
-                  <li>{{t 'clusterNew.ociocne.vcn.quickResources.vcn'}}</li>
-                  <li>{{t 'clusterNew.ociocne.vcn.quickResources.igw'}}</li>
-                  <li>{{t 'clusterNew.ociocne.vcn.quickResources.nat'}}</li>
-                  <li>{{t 'clusterNew.ociocne.vcn.quickResources.sgw'}}</li>
-                </ul>
-              </div>
-            {{/if}}
-            {{#if canChangeNetworking }}
-              <div class="radio">
-                <label>
-                  {{radio-button
-                    selection=vcnCreationMode
                     value="Existing"
                   }}
                   {{t 'clusterNew.ociocne.vcn.existing'}}

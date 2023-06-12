@@ -137,6 +137,26 @@
   {{/if}}
 {{/if}}
 
+{{#accordion-list-item title=(t "clusterNew.ociocne.vcn.title")
+                       detail=(t "clusterNew.ociocne.vcn.detail")
+                       showExpand=false
+                       expandOnInit=true
+                       expandAll=al.expandAll
+                       expand=(action expandFn)
+}}
+
+{{#if (isQuickCreate}}
+  <div>
+    <ul>
+      <li>VCN Compartment: {{getCompartmentId}}</li>
+      <li>VCN Name: {{getVcnName}}</li>
+      <li>Control Plane Subnet: {{getControlPlaneSubnet}}</li>
+      <li>Load Balancer Subnet: {{getLoadBalancerSubnet}}</li>
+      <li>Worker Node Subnet: {{getWorkerNodeSubet}}</li>
+    </ul>
+  </div>
+{{/if}}
+
 {{#if showDriverComponent}}
   {{component driverInfo.driverComponent
     applyClusterTemplate=applyClusterTemplate
