@@ -4356,38 +4356,34 @@ clusterNew:
       coreDNSTag: CoreDNS tag
       coreDNSTagHelp: Control plane coreDNS image tag
     verrazzano:
+      advanced: Advanced
       title: Verrazzano
-      detail: Configure Verrazzano Installation
+      detail: Configure the Verrazzano installation
       resource: Verrazzano Resource YAML
       install: Install Verrazzano
-      image: Verrazzano Platform Operator Image
-      imageHelp: image to use when installing Verrazzano Platform Operator
+      versionHelp: Verrazzano Version
+      versionOverride: Verrazzano Version Override
+      tagOverride: Verrazzano Tag Override
     addons:
+      tagOverrides: Tag Overrides
+      install: Addons
+      registry:
+        heading: Private Registry Configuration (Optional)
+        title: Private Registry
+        detail: Container registry URL to use for private registry
+        placeholder: 'my-container-registry.com'
       yaml:
         title: YAML Manifests
         detail: Deploy additional manifests on the managed cluster
         addNew: New Manifest
         delete: Delete Manifest
         label: Manifest YAML
-      title: Cluster Addons
-      detail: Configure addon services for your cluster
+      title: Container Registry
+      detail: Configure the container registry for your cluster
       calico:
-        title: Container Networking Interface
         install: Install Calico
-        registry: Calico Registry
-        registryHelp: Registry to download Calico images from
-      csi:
-        title: Container Storage Interface
-        install: Install CSI
-        image: OCI CSI Provider Image
-        imageHelp: Install image for Oracle Cloud Container Storage Interface
-        registry: CSI Registry
-        registryHelp: Registry to download CSI images from
       ccm:
-        title: Cloud Controller Manager
-        install: Install CCM
-        image: CCM Image
-        imageHelp: Install image for Oracle Cloud Controller Manager
+        install: Install OCI CCM/CSI
     advanced:
       title: Advanced Settings
       detail: Advanced Cluster Configuration
@@ -4406,6 +4402,7 @@ clusterNew:
       placeholder: Compartment OCID where the cluster will be created
       invalid: A valid compartment OCID is required
     controlplane:
+      advanced: Advanced
       title: Configure Control Plane
       detail: Configure the cluster control plane
     workers:
@@ -4422,6 +4419,10 @@ clusterNew:
       multiNode: Multi-Node
       multiNodeHelp: Configure a multi-node cluster
     version:
+      calico: Calico Image Tag
+      coredns: CoreDNS Image Tag
+      etcd: ETCD Image Tag
+      ocne: OCNE Version
       label: Kubernetes Version
       required: Kubernetes Version is required
     cidr:
@@ -4535,6 +4536,7 @@ clusterNew:
     vcn:
       title: Network Setup
       detail: Configure the virtual cloud network that will be used for your Kubernetes cluster.
+      detailEdit: Virtual Cloud network and subnets used for your Kubernetes cluster.
       next: Configure Control plane and worker nodes
       loading: Loading node configuration
       quick: Quick Create
