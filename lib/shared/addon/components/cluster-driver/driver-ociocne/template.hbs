@@ -447,30 +447,32 @@
               {{/input-or-display}}
             </div>
           </div>
-          <div class="row">
-            <div class="col span-4 mb-0">
-              <label class="acc-label">
-                {{t 'clusterNew.ociocne.nodeOcpus.label'}}
-              </label>
-              {{#input-or-display editable=(eq step 2) value=np.ocpus}}
-                {{input-integer min=1 max=64 value=np.ocpus classNames="form-control" placeholder=(t 'clusterNew.ociocne.nodeOcpus.placeholder')}}
-                <p class="help-block">
-                  {{t 'clusterNew.ociocne.nodeOcpus.help'}}
-                </p>
-              {{/input-or-display}}
+          {{#if isWorkerNodeFlex }}
+            <div class="row">
+              <div class="col span-4 mb-0">
+                <label class="acc-label">
+                  {{t 'clusterNew.ociocne.nodeOcpus.label'}}
+                </label>
+                {{#input-or-display editable=(eq step 2) value=np.ocpus}}
+                  {{input-integer min=1 max=64 value=np.ocpus classNames="form-control" placeholder=(t 'clusterNew.ociocne.nodeOcpus.placeholder')}}
+                  <p class="help-block">
+                    {{t 'clusterNew.ociocne.nodeOcpus.help'}}
+                  </p>
+                {{/input-or-display}}
+              </div>
+              <div class="col span-4 mb-0">
+                <label class="acc-label">
+                  {{t 'clusterNew.ociocne.nodeMemoryGbs.label'}}
+                </label>
+                {{#input-or-display editable=(eq step 2) value=np.memory}}
+                  {{input-integer min=2 max=1024 value=np.memory classNames="form-control" placeholder=(t 'clusterNew.ociocne.nodeMemoryGbs.placeholder')}}
+                  <p class="help-block">
+                    {{t 'clusterNew.ociocne.nodeMemoryGbs.help'}}
+                  </p>
+                {{/input-or-display}}
+              </div>
             </div>
-            <div class="col span-4 mb-0">
-              <label class="acc-label">
-                {{t 'clusterNew.ociocne.nodeMemoryGbs.label'}}
-              </label>
-              {{#input-or-display editable=(eq step 2) value=np.memory}}
-                {{input-integer min=2 max=1024 value=np.memory classNames="form-control" placeholder=(t 'clusterNew.ociocne.nodeMemoryGbs.placeholder')}}
-                <p class="help-block">
-                  {{t 'clusterNew.ociocne.nodeMemoryGbs.help'}}
-                </p>
-              {{/input-or-display}}
-            </div>
-          </div>
+          {{/if}}
           <div class="row">
             <div class="col span-2 mb-0">
               <button
@@ -1112,31 +1114,32 @@
                 {{/input-or-display}}
               </div>
             </div>
-            <div class="row">
-              <div class="col span-4 mb-0">
-                <label class="acc-label">
-                  {{t 'clusterNew.ociocne.nodeOcpus.label'}}
-                </label>
-                {{#input-or-display editable=(and (eq step 3) isNew) value=np.ocpus}}
-                  {{input-integer min=1 max=64 value=np.ocpus classNames="form-control" placeholder=(t 'clusterNew.ociocne.nodeOcpus.placeholder')}}
-                  <p class="help-block">
-                    {{t 'clusterNew.ociocne.nodeOcpus.help'}}
-                  </p>
-                {{/input-or-display}}
+            {{#if isWorkerNodeFlex }}
+              <div class="row">
+                <div class="col span-4 mb-0">
+                  <label class="acc-label">
+                    {{t 'clusterNew.ociocne.nodeOcpus.label'}}
+                  </label>
+                  {{#input-or-display editable=(and (eq step 3) isNew) value=np.ocpus}}
+                    {{input-integer min=1 max=64 value=np.ocpus classNames="form-control" placeholder=(t 'clusterNew.ociocne.nodeOcpus.placeholder')}}
+                    <p class="help-block">
+                      {{t 'clusterNew.ociocne.nodeOcpus.help'}}
+                    </p>
+                  {{/input-or-display}}
+                </div>
+                <div class="col span-4 mb-0">
+                  <label class="acc-label">
+                    {{t 'clusterNew.ociocne.nodeMemoryGbs.label'}}
+                  </label>
+                  {{#input-or-display editable=(and (eq step 3) isNew) value=np.memory}}
+                    {{input-integer min=2 max=1024 value=np.memory classNames="form-control" placeholder=(t 'clusterNew.ociocne.nodeMemoryGbs.placeholder')}}
+                    <p class="help-block">
+                      {{t 'clusterNew.ociocne.nodeMemoryGbs.help'}}
+                    </p>
+                  {{/input-or-display}}
+                </div>
               </div>
-              <div class="col span-4 mb-0">
-                <label class="acc-label">
-                  {{t 'clusterNew.ociocne.nodeMemoryGbs.label'}}
-                </label>
-                {{#input-or-display editable=(and (eq step 3) isNew) value=np.memory}}
-                  {{input-integer min=2 max=1024 value=np.memory classNames="form-control" placeholder=(t 'clusterNew.ociocne.nodeMemoryGbs.placeholder')}}
-                  <p class="help-block">
-                    {{t 'clusterNew.ociocne.nodeMemoryGbs.help'}}
-                  </p>
-                {{/input-or-display}}
-              </div>
-            </div>
-
+            {{/if}}
             <div class="row">
               <div class="col span-2 mb-0">
                 <button
