@@ -4367,10 +4367,7 @@ clusterNew:
       tagOverride: Verrazzano Tag Override
     imagePull:
       create: Create image Pull Secret
-      title: Image Pull Secret (Optional)
       detail: Provide inputs for creating an image pull secret to download Verrazzano and related images from a secured registry
-      registry: Registry server
-      registryHelp: The hostname of the docker registry
       user: User Name
       userHelp: Username for registry access
       password: Password
