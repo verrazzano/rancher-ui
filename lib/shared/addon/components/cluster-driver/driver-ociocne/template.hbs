@@ -1305,61 +1305,47 @@
             </div>
           </div>
           <p></p>
-          {{#accordion-list-item title=(t "clusterNew.ociocne.imagePull.title")
-                                 detail=(t "clusterNew.ociocne.imagePull.detail")
-                                 expandAll=expandAll
-                                 expand=(action expandFn)
-                                 expandOnInit=false}}
-            <div>
-              <label class="acc-label">
-                {{t 'clusterNew.ociocne.imagePull.create'}}
+          <div>
+            <label class="acc-label">
+              {{t 'clusterNew.ociocne.imagePull.create'}}
+            </label>
+            {{input type="checkbox" name="image-pull-checkbox" classNames="form-control" checked=config.createImagePullSecrets}}
+          </div>
+          <p class="help-block">
+            {{t 'clusterNew.ociocne.imagePull.detail'}}
+          </p>
+          <div class="row">
+            <div class="col span-4 mb-0">
+
+              <label for="image-pull-secret-username" class="acc-label">
+                {{t 'clusterNew.ociocne.imagePull.user'}}
               </label>
-              {{input type="checkbox" name="image-pull-checkbox" classNames="form-control" checked=config.createImagePullSecrets}}
+              {{input type="text" name="image-pull-secret-username" classNames="form-control" disabled=(not config.createImagePullSecrets) value=config.imagePullSecretUsername}}
+              <p class="help-block">
+                {{t 'clusterNew.ociocne.imagePull.userHelp'}}
+              </p>
             </div>
-            <div class="row">
-              <div class="col span-4 mb-0">
-                <label for="image-pull-secret-registry" class="acc-label">
-                  {{t 'clusterNew.ociocne.imagePull.registry'}}
-                </label>
-                {{input type="text" name="image-pull-secret-registry" classNames="form-control" value=config.imagePullSecretRegistry}}
-                <p class="help-block">
-                  {{t 'clusterNew.ociocne.imagePull.registryHelp'}}
-                </p>
-              </div>
-              <div class="col span-4 mb-0">
-
-                <label for="image-pull-secret-email" class="acc-label">
-                  {{t 'clusterNew.ociocne.imagePull.email'}}
-                </label>
-                {{input type="text" name="image-pull-secret-email" classNames="form-control" value=config.imagePullSecretEmail}}
-                <p class="help-block">
-                  {{t 'clusterNew.ociocne.imagePull.emailHelp'}}
-                </p>
-              </div>
+            <div class="col span-4 mb-0">
+              <label for="image-pull-secret-password" class="acc-label">
+                {{t 'clusterNew.ociocne.imagePull.password'}}
+              </label>
+              {{input type="password" name="image-pull-secret-password" classNames="form-control" disabled=(not config.createImagePullSecrets) value=config.imagePullSecretPassword}}
+              <p class="help-block">
+                {{t 'clusterNew.ociocne.imagePull.passwordHelp'}}
+              </p>
             </div>
-            <div class="row">
-              <div class="col span-4 mb-0">
+            <div class="col span-4 mb-0">
 
-                <label for="image-pull-secret-username" class="acc-label">
-                  {{t 'clusterNew.ociocne.imagePull.user'}}
-                </label>
-                {{input type="text" name="image-pull-secret-username" classNames="form-control" value=config.imagePullSecretUsername}}
-                <p class="help-block">
-                  {{t 'clusterNew.ociocne.imagePull.userHelp'}}
-                </p>
-              </div>
-              <div class="col span-4 mb-0">
-                <label for="image-pull-secret-password" class="acc-label">
-                  {{t 'clusterNew.ociocne.imagePull.password'}}
-                </label>
-                {{input type="password" name="image-pull-secret-password" classNames="form-control" value=config.imagePullSecretPassword}}
-                <p class="help-block">
-                  {{t 'clusterNew.ociocne.imagePull.passwordHelp'}}
-                </p>
-              </div>
-
+              <label for="image-pull-secret-email" class="acc-label">
+                {{t 'clusterNew.ociocne.imagePull.email'}}
+              </label>
+              {{input type="text" name="image-pull-secret-email" classNames="form-control" disabled=(not config.createImagePullSecrets) value=config.imagePullSecretEmail}}
+              <p class="help-block">
+                {{t 'clusterNew.ociocne.imagePull.emailHelp'}}
+              </p>
             </div>
-          {{/accordion-list-item}}
+
+          </div>
         {{/accordion-list-item}}
       {{/accordion-list-item}}
       {{#if (eq step 3)}}
