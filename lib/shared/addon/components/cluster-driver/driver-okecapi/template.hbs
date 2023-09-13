@@ -116,7 +116,7 @@
       <div class="row">
         <div class="col span-4">
           <label class="acc-label">
-            {{t 'clusterNew.ociocne.controlPlaneSubnet.label'}}
+            {{t 'clusterNew.okecapi.network.apiEndpoint.label'}}
           </label>
           <div>{{config.controlPlaneSubnet}}</div>
         </div>
@@ -207,6 +207,17 @@
               {{#if (eq vcnCreationMode "Existing")}}
                 <div class="row">
                   <div class="col span-10">
+                    <label class="acc-label">{{t 'clusterNew.okecapi.network.cniType.label'}}{{field-required}}</label>
+                    {{#input-or-display value=config.vcnId}}
+                      {{searchable-select class="form-control"
+                                          content=cniOptions
+                                          value=config.cniType
+                      }}
+                    {{/input-or-display}}
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col span-10">
                     <label class="acc-label">{{t 'clusterNew.ociocne.vcnCompartment.label'}}{{field-required}}</label>
                     {{#input-or-display editable=isNew value=vcnCompartmentName}}
                       {{#if this.fetchCompartmentsTask.isIdle}}
@@ -264,7 +275,7 @@
                 <div class="row">
                   <div class="col span-10">
                     <label class="acc-label">
-                      {{t 'clusterNew.ociocne.controlPlaneSubnet.label'}}{{field-required}}
+                      {{t 'clusterNew.okecapi.network.apiEndpoint.label'}}{{field-required}}
                     </label>
                     {{#input-or-display value=config.controlPlaneSubnet}}
                       {{searchable-select class="form-control"
