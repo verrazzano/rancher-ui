@@ -3766,6 +3766,7 @@ clusterNew:
     network:
       podSubnet:
         label: Pod Subnet (Optional)
+        labelEdit: Pod Subnet
       cniType:
         label: CNI Type
       apiEndpoint:

@@ -145,6 +145,17 @@
           <div>{{config.workerNodeSubnet}}</div>
         </div>
       </div>
+      {{#if config.podSubnet}}
+        <div class="row">
+          <div class="col span-4">
+            <label class="acc-label">
+              {{t 'clusterNew.okecapi.network.podSubnet.labelEdit'}}
+            </label>
+            <div>{{config.podSubnet}}</div>
+          </div>
+        </div>
+      {{/if}}
+
 
     {{/accordion-list-item}}
     {{!-- edit cluster --}}
