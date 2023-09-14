@@ -255,7 +255,7 @@
               <label class="acc-label">
                 {{t 'clusterNew.okecapi.k8sversion.label'}}
               </label>
-              {{#input-or-display editable=(and (eq step 3) isNew) value=np.memory}}
+              {{#input-or-display editable=(eq step 2) value=np.kubernetesVersion}}
                 {{searchable-select class="form-control"
                                     content=kubernetesVersionOptions
                                     value=config.kubernetesVersion
@@ -703,7 +703,7 @@
                 <label class="acc-label">
                   {{t 'clusterNew.okecapi.k8sversion.label'}}
                 </label>
-                {{#input-or-display editable=(and (eq step 3) isNew) value=np.memory}}
+                {{#input-or-display editable=(and (eq step 3) isNew) value=np.kubernetesVersion}}
                   {{searchable-select class="form-control"
                                       content=kubernetesVersionOptions
                                       value=config.kubernetesVersion
