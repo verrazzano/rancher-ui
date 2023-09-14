@@ -251,6 +251,19 @@
             </div>
           </div>
           <div class="row">
+            <div class="col span-4 mb-0">
+              <label class="acc-label">
+                {{t 'clusterNew.okecapi.k8sversion.label'}}
+              </label>
+              {{#input-or-display editable=(and (eq step 3) isNew) value=np.memory}}
+                {{searchable-select class="form-control"
+                                    content=kubernetesVersionOptions
+                                    value=config.kubernetesVersion
+                }}
+              {{/input-or-display}}
+            </div>
+          </div>
+          <div class="row">
             <div class="col span-4">
               <label class="acc-label">
                 {{t 'clusterNew.ociocne.nodeShape.label'}}{{field-required}}
@@ -682,6 +695,19 @@
                   <p class="help-block">
                     {{t 'clusterNew.ociocne.nodeName.help'}}
                   </p>
+                {{/input-or-display}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col span-4 mb-0">
+                <label class="acc-label">
+                  {{t 'clusterNew.okecapi.k8sversion.label'}}
+                </label>
+                {{#input-or-display editable=(and (eq step 3) isNew) value=np.memory}}
+                  {{searchable-select class="form-control"
+                                      content=kubernetesVersionOptions
+                                      value=config.kubernetesVersion
+                  }}
                 {{/input-or-display}}
               </div>
             </div>

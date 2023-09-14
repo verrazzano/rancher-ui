@@ -3774,6 +3774,8 @@ clusterNew:
     numWorkerNodes:
       label: Node Count
       help: The number of nodes in the node pool
+    k8sversion:
+      label: Kubernetes Version
     vcn:
       quickResources:
         header: 'New resources include:'
