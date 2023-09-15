@@ -258,7 +258,7 @@
               {{#input-or-display editable=(eq step 2) value=np.kubernetesVersion}}
                 {{searchable-select class="form-control"
                                     content=kubernetesVersionOptions
-                                    value=config.kubernetesVersion
+                                    value=np.kubernetesVersion
                 }}
               {{/input-or-display}}
             </div>
@@ -761,7 +761,7 @@
                   {{input type="text" name="np-name" classNames="form-control" value=np.name}}
                   <p class="help-block">
                     {{t 'clusterNew.ociocne.nodeName.help'}}
-                  </p>
+                  </p>©
                 {{/input-or-display}}
               </div>
             </div>
@@ -773,7 +773,7 @@
                 {{#input-or-display editable=(and (eq step 3) isNew) value=np.kubernetesVersion}}
                   {{searchable-select class="form-control"
                                       content=kubernetesVersionOptions
-                                      value=config.kubernetesVersion
+                                      value=np.kubernetesVersion
                   }}
                 {{/input-or-display}}
               </div>
