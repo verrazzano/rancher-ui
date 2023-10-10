@@ -3765,7 +3765,7 @@ clusterNew:
       label: OKE Version
     network:
       podSubnet:
-        label: Pod Subnet (Optional)
+        label: Pod Subnet
         labelEdit: Pod Subnet
       cniType:
         label: CNI Type
