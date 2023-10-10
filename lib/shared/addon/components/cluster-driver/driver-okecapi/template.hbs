@@ -633,7 +633,7 @@
                 <div class="row">
                   <div class="col span-10">
                     <label class="acc-label">
-                      {{t 'clusterNew.okecapi.network.podSubnet.label'}}
+                      {{t 'clusterNew.okecapi.network.podSubnet.label'}}{{field-required}}
                     </label>
                     {{#input-or-display value=config.podSubnet}}
                       {{searchable-select class="form-control"
